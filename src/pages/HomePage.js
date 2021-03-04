@@ -1,11 +1,14 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import HobbyIndex from '../components/hobbyComponents/HobbyIndex'
+import SessionPreview from '../components/sessionComponents/SessionPreview'
 
 class HomePage extends React.Component {
   state = {
     user: {},
     hobbies: [],
-    sessions: []
+    sessions: [],
+    currentHobby: {}
   }
 
   
@@ -23,21 +26,41 @@ class HomePage extends React.Component {
     })
       .then((res) => res.json())
       .then((jsonData) => {
-        this.setState({hobbies: jsonData})
+        this.setState({
+          hobbies: jsonData,
+          currentHobby: jsonData[0]
+        })
       })
       .catch((err) => console.log(err))
   }
 
+  componen
+
+  updateCurrentHobby = (hobby) => {    
+    this.setState({
+      currentHobby: hobby
+    })
+  }
+
 
   render () {
-    console.log(this.state.hobbies)
-    console.log(this.state.user)
   return (
-    <div>
-      <h1>Welcome Home, {this.state.user.name}</h1>
-      <div className="hobbyIndex">
-        <HobbyIndex hobbies={this.state.hobbies}/>
+    <div className="homepage-container">
+      <h1>Welcome Home,    {this.state.user.name}!</h1>
+        <div className="homepage-row row">
+          <div className="hobbyIndex">
+            <HobbyIndex 
+              hobbies={this.state.hobbies}
+              updateCurrentHobby={this.updateCurrentHobby}
+            />
         
+          </div>
+          <div className="sessionPreview">
+            <Link to={`/hobbies/${this.state.currentHobby._id}`} >
+              <h1>{this.state.currentHobby.name}</h1>
+            </Link>
+              <SessionPreview hobby={this.state.currentHobby}/>
+          </div>
       </div>
 
 

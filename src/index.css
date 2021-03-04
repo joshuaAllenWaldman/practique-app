@@ -8,3 +8,11 @@
   background-color: turquoise;
 
 }
+.homepage-container{
+  text-align: center;
+  margin: 0 50px 0 50px;
+}
+.homepage-row{
+  display: flex;
+  justify-content: space-between;
+}

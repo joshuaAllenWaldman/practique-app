@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import SessionIndex from '../components/sessionComponents/SessionIndex';
 
 class HobbyPage extends React.Component {
   state ={
@@ -29,16 +30,20 @@ class HobbyPage extends React.Component {
     const hobbyId = this.props.match.params.id;
 
     return (
-      <div>
-        <h1>{this.state.hobby.name}</h1>
-
-      <div>
-        <Link to={`/hobbies/${hobbyId}/add-session`} >
-          new session
-        </Link>
+      <div className="hobbyshowContainer">
+          <div className="hobbyInfoCol" >
+            <h1>{this.state.hobby.name}</h1>
+        </div>
+        <div className="sessionCol">
+        <SessionIndex sessions={this.state.sessions}/>
+          <div>
+            <Link to={`/hobbies/${hobbyId}/add-session`} >
+              <button>Add New Session</button>
+            </Link>
+          </div>
+        </div>
       </div>
 
-      </div>
     )
   }
 }

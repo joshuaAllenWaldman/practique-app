@@ -16,11 +16,11 @@ const routes = (
     <Switch>
       <Route exact path='/' component={LandingPage} />
       <Route path='/home' component={HomePage} />
+      <Route exact path='/hobbies/:id/add-session' component={ NewSessionForm } />
       <Route path='/hobbies/:id' component={HobbyPage} />
       <Route path='/login' component={LoginForm} />
       <Route path='/signup' component={SignupForm} />
       <Route path='/add-hobby' component={NewHobbyForm} />
-      <Route path='/hobbies/:id/add-session' component={NewSessionForm} />
 
     </Switch>
   )
