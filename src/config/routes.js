@@ -8,9 +8,9 @@ import SessionShowPage from '../pages/SessionShowPage';
 
 //Forms. May convert to components later.
 import SignupForm from '../components/userForms/SignupForm'
-import NewHobbyForm from '../components/hobbyForms/NewHobbyForm';
+import NewHobbyFormHook from '../components/hobbyForms/NewHobbyFormHook';
 import LoginForm from '../components/userForms/LoginForm'
-import NewSessionForm from '../components/sessionForms/NewSessionForm'
+import NewSessionFormHook from '../components/sessionForms/NewSessionFormHook'
 import EditHobbyForm from '../components/hobbyForms/EditHobbyForm';
 
 
@@ -19,14 +19,14 @@ const routes = (
       <Route exact path='/' component={LandingPage} />
       <Route path='/home' component={HomePage} />
       
-      <Route exact path='/hobbies/:id/add-session' component={ NewSessionForm } />
+      <Route exact path='/hobbies/:id/add-session' component={ NewSessionFormHook } />
       <Route exact path='/hobbies/:id/session/:seshId' component={ SessionShowPage } />
       <Route path='/hobbies/:id/edit-hobby' component={ EditHobbyForm } />
       <Route path='/hobbies/:id' component={HobbyPage} />
 
       <Route path='/login' component={LoginForm} />
       <Route path='/signup' component={SignupForm} />
-      <Route path='/add-hobby' component={NewHobbyForm} />
+      <Route path='/add-hobby' component={NewHobbyFormHook} />
     </Switch>
   )
 

@@ -34,7 +34,7 @@ class HomePage extends React.Component {
       .catch((err) => console.log(err))
   }
 
-  componen
+  
 
   updateCurrentHobby = (hobby) => {    
     this.setState({

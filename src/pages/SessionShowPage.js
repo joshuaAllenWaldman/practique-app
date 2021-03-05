@@ -1,12 +1,14 @@
 import React from 'react';
+import EditSessionForm from '../components/sessionForms/EditSessionForm';
+import EditSessionFormHook from '../components/sessionForms/EditSessionFormHook';
 
 class SessionShowPage extends React.Component {
   state ={
-    session: {},
-    hobby: {}
+    session: undefined,
+    hobby: undefined
   }
 
-  componentDidMount () {
+  fetchSessionInfo = () => {
     const hobbyId = this.props.match.params.id;
     const seshId = this.props.match.params.seshId
     fetch(`http://localhost:4000/api/v1/hobbies/${hobbyId}/sessions/${seshId}`, {
@@ -19,11 +21,36 @@ class SessionShowPage extends React.Component {
         credentials: 'include'
       })
         .then((res) => res.json())
-        .then((jsonData) => this.setState({hobby: jsonData}))  
+        .then((jsonData) => this.setState({hobby: jsonData})) 
+  }
+
+  componentDidMount () {
+    this.fetchSessionInfo();
+  }
+
+  deleteSession = (seshId) => {
+    const hobbyId = this.props.match.params.id;
+    if (window.confirm('Are you sure you want to delete this session?')) {
+      fetch (`http://localhost:4000/api/v1/hobbies/${hobbyId}/sessions/${seshId}`,{
+        method: 'DELETE',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+        .then((res) => res.json())
+        .then((jsonData) => console.log(jsonData))
+        .then(() => this.props.history.push(`/hobbies/${hobbyId}`))
+    }
+
   }
   
+  
   render () {
-    console.log(this.state)
+    if(!this.state.hobby || !this.state.session) {
+      return <div>Loading</div>
+    }
+    
     return (
       <div className="sessionShowContainer" >
         <div className="title">
@@ -42,6 +69,16 @@ class SessionShowPage extends React.Component {
             <p>{this.state.session.challengeLevel}</p>
           </div>
         </div>
+        {/* <EditSessionForm 
+          sessionInfo={this.state.session}
+          fetchSessionInfo={this.fetchSessionInfo}
+          deleteSession={this.deleteSession }
+        /> */}
+        <EditSessionFormHook 
+          sessionInfo={this.state.session}
+          fetchSessionInfo={this.fetchSessionInfo}
+          deleteSession={this.deleteSession }
+        />
     </div>
     )
   }
