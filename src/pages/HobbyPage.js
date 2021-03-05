@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import SessionIndex from '../components/sessionComponents/SessionIndex';
+import EditHobbyForm from '../components/hobbyForms/EditHobbyForm';
 
 class HobbyPage extends React.Component {
   state ={
@@ -40,8 +41,14 @@ class HobbyPage extends React.Component {
             <Link to={`/hobbies/${hobbyId}/add-session`} >
               <button>Add New Session</button>
             </Link>
+            <Link to={`/hobbies/${hobbyId}/edit-hobby`} >
+              <button>Edit Hobby</button>
+            </Link>
           </div>
         </div>
+        <hr/>
+        <h1>Edit Hobby TEMPORARY TEMPORARY</h1>
+        <EditHobbyForm hobby={this.state.hobby}/>
       </div>
 
     )

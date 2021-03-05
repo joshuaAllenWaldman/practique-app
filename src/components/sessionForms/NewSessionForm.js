@@ -4,10 +4,9 @@ class NewSessionForm extends React.Component {
   state = {
     nickName: '',
     sessionGoals: '',
-    challengeLevel: null,
+    challengeLevel: 1,
     notes: '',
-    startTime: '',
-    duration: null,
+    duration: 0,
   }
 
   handleChange = (event) => {
@@ -50,12 +49,10 @@ class NewSessionForm extends React.Component {
             <option value={4}>4</option>
             <option value={5}>5</option>
           </select> <br/>
-          <label htmlFor="notes">Add some notes of how your session when</label>
+          <label htmlFor="notes">Add some notes of how your session went</label>
           <textarea name="notes" id="notes" cols="30" rows="10" value={this.state.notes} onChange={this.handleChange}>Type here</textarea> <br/>
-          <label htmlFor="startTime">Start Time</label>
-          <input type="Time" name="startTime" id="startTime" value={this.state.startTime} onChange={this.handleChange}/> <br/>
-          <label htmlFor="duration">How Long did you practice for?</label>
-          <input type="Time" name="duration" id="duration" value={this.state.duration} onChange={this.handleChange}/>
+          <label htmlFor="duration">How Long did you practice for?(In Minutes)</label>
+          <input type="number" name="duration" id="duration" value={this.state.duration} onChange={this.handleChange}/>
           <button>Save Session</button>
         </form>
       </div>
