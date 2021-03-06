@@ -1,5 +1,5 @@
 import React from 'react';
-import EditSessionForm from '../components/sessionForms/EditSessionForm';
+
 import EditSessionFormHook from '../components/sessionForms/EditSessionFormHook';
 
 class SessionShowPage extends React.Component {
@@ -69,11 +69,6 @@ class SessionShowPage extends React.Component {
             <p>{this.state.session.challengeLevel}</p>
           </div>
         </div>
-        {/* <EditSessionForm 
-          sessionInfo={this.state.session}
-          fetchSessionInfo={this.fetchSessionInfo}
-          deleteSession={this.deleteSession }
-        /> */}
         <EditSessionFormHook 
           sessionInfo={this.state.session}
           fetchSessionInfo={this.fetchSessionInfo}

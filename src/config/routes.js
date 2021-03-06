@@ -11,7 +11,7 @@ import SignupForm from '../components/userForms/SignupForm'
 import NewHobbyFormHook from '../components/hobbyForms/NewHobbyFormHook';
 import LoginForm from '../components/userForms/LoginForm'
 import NewSessionFormHook from '../components/sessionForms/NewSessionFormHook'
-import EditHobbyForm from '../components/hobbyForms/EditHobbyForm';
+
 
 
 const routes = (
@@ -21,7 +21,6 @@ const routes = (
       
       <Route exact path='/hobbies/:id/add-session' component={ NewSessionFormHook } />
       <Route exact path='/hobbies/:id/session/:seshId' component={ SessionShowPage } />
-      <Route path='/hobbies/:id/edit-hobby' component={ EditHobbyForm } />
       <Route path='/hobbies/:id' component={HobbyPage} />
 
       <Route path='/login' component={LoginForm} />

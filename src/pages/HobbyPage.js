@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import SessionIndex from '../components/sessionComponents/SessionIndex';
-import EditHobbyForm from '../components/hobbyForms/EditHobbyForm';
+
 import EditHobbyFormHook from '../components/hobbyForms/EditHobbyFormHook';
 
 
@@ -72,12 +72,6 @@ class HobbyPage extends React.Component {
         </div>
         <hr/>
         <h1>Edit Hobby TEMPORARY TEMPORARY</h1>
-        {/* <EditHobbyForm 
-        hobby={this.state.hobby} 
-        history={this.props.history} 
-        fetchHobbyInfo={this.fetchHobbyInfo}
-        deleteHobby={this.deleteHobby}
-        /> */}
         <EditHobbyFormHook 
         hobby={this.state.hobby} 
         history={this.props.history} 
