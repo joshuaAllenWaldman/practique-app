@@ -1,36 +1,16 @@
-import { render } from '@testing-library/react';
-import React from 'react';
+import React, { useRef } from 'react'
+import { useForm } from 'react-hook-form'
+
+function SignupForm (props) {
+  const { register, handleSubmit, watch, errors } = useForm();
+  const password = useRef({})
+  password.current = watch("password", "")
 
 
-class SignupForm extends React.Component {
-  state = {
-    name: '',
-    username: '',
-    email: '',
-    password: '',
-    confPassword: ''
-  }
-  handleChange = (event) => {
-    this.setState({
-      [event.target.id]: event.target.value
-    })
-    console.log(this.state)
-  }
 
-  passwordConfirm = (event) => {
-
-  }
-  handleSubmit = (event) => {
-    event.preventDefault();
-    const {confPassword, ...rest} = this.state;
-    if (confPassword !== rest.password)  {
-      alert('Passwords do not match!')
-      this.setState({
-        password: '',
-        confPassword: '',
-      })
-      return;
-    }
+  const onSubmit = (data) => {
+    console.log(data)
+    const {confPassword, ...rest} = data
     fetch('http://localhost:4000/api/v1/users/', {
       method: 'POST',
       headers: {
@@ -40,31 +20,36 @@ class SignupForm extends React.Component {
     })
       .then((res) => res.json())
       .then((jsonData) => console.log(jsonData))
-      .then(() => this.props.history.push('/home'))
+      .then(() => props.history.push('/home'))
       .catch((err) => console.log(err))
   }
 
 
-  render() {
-    return (
-      <div>
-        <form onSubmit={this.handleSubmit} >
+  return (
+    <form onSubmit={handleSubmit(onSubmit)} >
           <label htmlFor="name">Name</label>
-          <input type="text" name="name" id="name" value={this.state.name} onChange={this.handleChange} /> <br/>
+          <input type="text" name="name" id="name" ref={register({required: true})}/> <br/>
+          {errors.name && <p>Name Required</p>}
           <label htmlFor="username">UserName</label>
-          <input type="text" name="username" id="username" value={this.state.username} onChange={this.handleChange}/> <br/>
+          <input type="text" name="username" id="username" ref={register({required: true, minLength: 1})} />
+          {errors.username && <p>Username Required</p>}
+          {errors.username === 'minLength' && <p>Must be at least 6 characters.</p>}
+
+
           <label htmlFor="email">email</label>
-          <input type="email" name="email" id="email" value={this.state.email} onChange={this.handleChange}/> <br/>
+          <input type="email" name="email" id="email" ref={register({required: true})}/> <br/>
           <label htmlFor="password">Password</label>
-          <input type="text" name="password" id="password" value={this.state.password} onChange={this.handleChange}/> <br/>
+          <input type="password" name="password" id="password" ref={register({required: 'You must create a password', minLength: {value: 2, message: 'Password must have at least 6 characters'}})}/> 
+          {errors.password && <p>{errors.password.message}</p>}
           <label htmlFor="confPassword">Confirm Password</label>
-          <input type="text" name="confPassword" id="confPassword" value={this.state.confPassword} onChange={this.handleChange}/> <br/>
+          <input type="password" name="confPassword" id="confPassword" ref={register({
+            validate: value =>
+            value === password.current || "The passwords do not match"
+          })}/> 
+          {errors.confPassword && <p>{errors.confPassword.message}</p>}
           <button type="submit">Signup!</button>
         </form>
-      </div>
-    )
-
-  }
+  )
 }
 
 export default SignupForm;

@@ -23,10 +23,8 @@ class SessionPreview extends React.Component  {
 
   render () {
     return (
-      <div>
-        <h4>Latest Sessions:</h4>
-        <SessionPreviewList sessions={this.state.sessions} />
-      </div>
+        <SessionPreviewList
+        sessions={this.state.sessions} />
     )
   }
 }

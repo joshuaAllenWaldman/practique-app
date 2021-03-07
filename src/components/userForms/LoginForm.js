@@ -1,47 +1,33 @@
 import React from 'react';
+import { useForm } from 'react-hook-form'
 
-class LoginForm extends React.Component {
-state = {
-  username: '',
-  password: ''
-}
+const LoginForm = (props) => {
 
+  const { register, handleSubmit, watch, errors } = useForm()
 
-
-handleChange = (event) => {
-  this.setState({
-    [event.target.id]: event.target.value
-  })
-}
-
-handleSubmit = (e) => {
-  e.preventDefault();
-  fetch('http://localhost:4000/api/v1/users/login', {
-    method: 'POST',
-    credentials: 'include',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(this.state)
-  })
-    .then(() => this.props.history.push('/home'))
-    .catch((err) => console.log(err))
-}
-
-
-  render() {
-    return(
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="username">UserName</label>
-          <input type="text" name="username" id="username" value={this.state.username} onChange={this.handleChange} /> <br/>
-          <label htmlFor="password">Password</label>
-          <input type="text" name="password" id="password" value={this.state.password} onChange={this.handleChange} />
-          <button>Login</button>
-        </form>
-      </div>
-    )
+  const onSubmit = (data) => {
+    console.log(data)
+    fetch('http://localhost:4000/api/v1/users/login', {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+      .then(() => props.history.push('/home'))
+      .catch((err) => console.log(err))
   }
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+    <label htmlFor="username">UserName</label>
+    <input type="text" name="username" id="username" ref={register({required: true})}/> <br/>
+    <label htmlFor="password">Password</label>
+    <input type="text" name="password" id="password"  ref={register({required: true})}/>
+    <button>Login</button>
+  </form>
+  )
 }
 
 export default LoginForm

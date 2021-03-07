@@ -48,7 +48,7 @@ function EditHobbyFormHook (props) {
           <button type="submit">Update Hobby</button>
         </form>
         <button onClick={() => props.deleteHobby(props.hobby._id)} >Delete Hobby</button>
-      </div>
+      </div>  
   )
 }
 
