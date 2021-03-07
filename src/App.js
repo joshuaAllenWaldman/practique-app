@@ -5,9 +5,11 @@ import './style/main.css'
 
 function App() {
   return (
-    <div className=" bg-blue-200">
+    <div className="h-screen bg-blue-200">
       <Header/>
       {routes} 
+
+
     </div>
   );
 }

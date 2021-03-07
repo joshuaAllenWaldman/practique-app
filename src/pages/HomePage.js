@@ -45,7 +45,7 @@ class HomePage extends React.Component {
   // bg-blue-600 p-3 rounded min-w-500 min-h-screen flex justify-center
   render () {
   return (
-    <div className="container min-h-screen">
+    <div className="container min-h-screen items-center">
         <div className="grid grid-cols-2 gap-2">
 
           <div className="ml-2">

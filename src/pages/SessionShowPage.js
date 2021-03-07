@@ -52,29 +52,35 @@ class SessionShowPage extends React.Component {
     }
     
     return (
-      <div className="sessionShowContainer" >
-        <div className="title">
-          <h1>{this.state.hobby.name} Session Details </h1>
-          <h4>Session Nickname: {this.state.session.nickName}</h4>
-        </div>
-        <div className="sessionGoals">
-          <h3>Session Goals</h3>
-          <div>
-            <p>{this.state.session.sessionGoals}</p>
+      <div>
+        <div className="px-4 my-32 max-w-3xl mx-auto space-y-4 bg-white flex flex-col items-center" >
+          <div className="bg-blue-200 py-4 m-2 h-64 items-center">
+            <div className="title">
+            <h5>{this.state.hobby.name} Session Details </h5>
+            <h1 className="text-2xl">Session Nickname: {this.state.session.nickName}</h1>
           </div>
-        </div>
-        <div className="difficulty">
-          <h3>Challenge Level</h3>
-          <div>
-            <p>{this.state.session.challengeLevel}</p>
+          <div className="sessionGoals">
+            <h3>Session Goals</h3>
+            <div>
+              <p>{this.state.session.sessionGoals}</p>
+            </div>
           </div>
-        </div>
-        <EditSessionFormHook 
-          sessionInfo={this.state.session}
-          fetchSessionInfo={this.fetchSessionInfo}
-          deleteSession={this.deleteSession }
-        />
-    </div>
+          <div className="difficulty">
+            <h3>Challenge Level</h3>
+            <div>
+              <p>{this.state.session.challengeLevel}</p>
+            </div>
+          </div>
+          </div>
+          
+          {/* <EditSessionFormHook 
+            sessionInfo={this.state.session}
+            fetchSessionInfo={this.fetchSessionInfo}
+            deleteSession={this.deleteSession }
+          /> */}
+      </div>
+
+      </div>
     )
   }
 }

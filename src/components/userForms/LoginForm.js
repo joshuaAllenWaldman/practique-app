@@ -20,13 +20,23 @@ const LoginForm = (props) => {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-    <label htmlFor="username">UserName</label>
-    <input type="text" name="username" id="username" ref={register({required: true})}/> <br/>
-    <label htmlFor="password">Password</label>
-    <input type="text" name="password" id="password"  ref={register({required: true})}/>
-    <button>Login</button>
-  </form>
+    <div className="flex justify-center items-center">
+      <form onSubmit={handleSubmit(onSubmit)} className="px-4 my-32 max-w-3xl mx-auto space-y-4">
+        <div>
+          <label htmlFor="username">UserName</label>
+          <input className="border border-gray-800 ml-2 w-full" type="text" name="username" id="username" ref={register({required: true})}/> <br/>
+        </div>
+
+        <div>
+          <label htmlFor="password">Password</label>
+          <input className="border border-gray-800 ml-2 w-full" type="text" name="password" id="password"  ref={register({required: true})}/>
+        </div>
+        <div className="flex justify-center">
+        <button className="relative items-center bg-blue-800 text-white px-16 py-2 hover:bg-blue-400" >Login</button>
+        </div>
+      </form>
+
+    </div>
   )
 }
 

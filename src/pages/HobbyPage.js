@@ -1,16 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
 import SessionIndex from '../components/sessionComponents/SessionIndex';
-
 import EditHobbyFormHook from '../components/hobbyForms/EditHobbyFormHook';
-
+import Modal from 'react-modal';
 
 class HobbyPage extends React.Component {
   state ={
     hobby: undefined,
-    sessions: undefined
+    sessions: undefined,
+    modalIsOpen: false,
   }
+
+
   fetchHobbyInfo = () => {
     console.log('called component did mount hobbypage')
     const hobbyId = this.props.match.params.id;
@@ -52,6 +53,13 @@ class HobbyPage extends React.Component {
     }
   }
 
+  openEditHobbyModal = () => {
+    this.setState({modalIsOpen: true})
+  }
+  closeEditHobbyModal = () => {
+    this.setState({modalIsOpen: false})
+  }
+
   render () {
     const hobbyId = this.props.match.params.id;
     if(!this.state.hobby || !this.state.sessions) {
@@ -79,9 +87,7 @@ class HobbyPage extends React.Component {
         <div className="grid grid-cols-2 flex justify-between">
           <div className="flex justify-center">
               <div className="bg-white border-2 border-black hover:bg-red-400 py-2 px-4">
-                  <Link to={`/hobbies/${hobbyId}/add-session`} >
-                    <button>Edit Hobby</button>
-                  </Link>
+                <button onClick={() => this.openEditHobbyModal()} >Edit Hobby</button>
                 </div>
             </div>
 
@@ -94,17 +100,22 @@ class HobbyPage extends React.Component {
           </div>
         </div>
       
+        <Modal 
+        isOpen={this.state.modalIsOpen}
+        >
+          <div className="bg-white absolute inset-0 flex justify-center items-center ">
+            <EditHobbyFormHook 
+              hobby={this.state.hobby} 
+              history={this.props.history} 
+              fetchHobbyInfo={this.fetchHobbyInfo}
+              deleteHobby={this.deleteHobby}
+              openEditHobbyModal={this.openEditHobbyModal}
+              closeEditHobbyModal={this.closeEditHobbyModal}
+            />
+          </div>
+        </Modal>
 
 
-        {/* <div className="form">
-          <h1>Edit Hobby TEMPORARY TEMPORARY</h1>
-          <EditHobbyFormHook 
-            hobby={this.state.hobby} 
-            history={this.props.history} 
-            fetchHobbyInfo={this.fetchHobbyInfo}
-            deleteHobby={this.deleteHobby}
-          />
-        </div> */}
       </div>
 
     )

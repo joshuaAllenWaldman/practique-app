@@ -34,9 +34,10 @@ function EditSessionFormHook (props) {
 
 
   return (
+    <div>
     <form onSubmit={handleSubmit(onSubmit)}>
           <label htmlFor="nickName">Session nickname(optional):</label>
-          <input type="text" name="nickName" id="nickName" ref={register}/> <br/>
+          <input className="border-2 border-black" type="text" name="nickName" id="nickName" ref={register}/> <br/>
           <label htmlFor="sessionGoals">What is your goal for this session?</label>
           <input type="text" name="sessionGoals" id="sessionGoals" ref={register}/> <br/>
           <label htmlFor="challengeLevel">How Challening was this session? 1 being easy 5 being hard.</label>
@@ -53,6 +54,8 @@ function EditSessionFormHook (props) {
           <input type="number" name="duration" id="duration" ref={register}/>
           <button>Submit Changes</button>
         </form>
+
+    </div>
   )
 
 }

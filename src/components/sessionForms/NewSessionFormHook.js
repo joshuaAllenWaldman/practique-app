@@ -27,26 +27,36 @@ function NewSessionFormHook (props) {
 
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-          <label htmlFor="nickName">Session nickname:</label>
-          <input type="text" name="nickName" id="nickName" ref={register} /> <br/>
-          <label htmlFor="sessionGoals">What is your goal for this session?</label>
-          <input type="text" name="sessionGoals" id="sessionGoals" ref={register} /> <br/>
-          <label htmlFor="challengeLevel">How Challening was this session? 1 being easy 5 being hard.</label>
-          <select name="challengeLevel" id="challengeLevel" ref={register({required: true})} >
-            <option value={1}>1</option>
-            <option value={2}>2</option>
-            <option value={3}>3</option>
-            <option value={4}>4</option>
-            <option value={5}>5</option>
-          </select> 
-          {errors.challengeLevel === 'required' && <span>You must select a challenge level</span>}
+    <form onSubmit={handleSubmit(onSubmit)} className="px-4 max-w-3xl mx-auto">
+      <div>
+        <label htmlFor="nickName">Session nickname:</label>
+        <input className="border border-gray-400 block py-2 px-4 w-fuu rounded"  type="text" name="nickName" id="nickName" ref={register} /> <br/>
+      </div>
+      <div>
+        <label htmlFor="sessionGoals">What is your goal for this session?</label>
+        <input className="border border-gray-400 block py-2 px-4 w-fuu rounded" type="text" name="sessionGoals" id="sessionGoals" ref={register} /> <br/>
+      </div>
+      <div>
+        <label htmlFor="challengeLevel">How Challening was this session? 1 being easy 5 being hard.</label>
+        <select className="border border-gray-400 block py-2 px-4 w-fuu rounded" name="challengeLevel" id="challengeLevel" ref={register({required: true})} >
+          <option value={1}>1</option>
+          <option value={2}>2</option>
+          <option value={3}>3</option>
+          <option value={4}>4</option>
+          <option value={5}>5</option>
+        </select> 
+        {errors.challengeLevel === 'required' && <span>You must select a challenge level</span>}
+      </div>
           <br/>
+        <div>
           <label htmlFor="notes">Add some notes of how your session went</label>
-          <textarea name="notes" id="notes" cols="30" rows="10" ref={register}></textarea> <br/>
+          <textarea className="border border-gray-400 block py-2 px-4 w-fuu rounded" name="notes" id="notes" cols="30" rows="10" ref={register}></textarea> <br/>
+        </div>
+        <div>
           <label htmlFor="duration">How Long did you practice for?(In Minutes)</label>
-          <input type="number" name="duration" id="duration" ref={register} />
-          <button>Add Session</button>
+          <input className="border border-gray-400 block py-2 px-4 w-fuu rounded" type="number" name="duration" id="duration" ref={register} />
+        </div>
+          <button className="border py-2 px-4 bg-green-400 hover:bg-green-200" >Add Session</button>
         </form>
   )
 }
