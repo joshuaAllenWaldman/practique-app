@@ -5,7 +5,7 @@ import './style/main.css'
 
 function App() {
   return (
-    <div className="h-screen bg-blue-200">
+    <div className="bg-blue-200" style={{minHeight: '100vh'}}>
       <Header/>
       {routes} 
 

@@ -1,14 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Modal from 'react-modal';
 import SessionIndex from '../components/sessionComponents/SessionIndex';
 import EditHobbyFormHook from '../components/hobbyForms/EditHobbyFormHook';
-import Modal from 'react-modal';
+import NewSessionForm from '../components/sessionForms/NewSessionFormHook';
+import NewSessionFormHook from '../components/sessionForms/NewSessionFormHook';
 
 class HobbyPage extends React.Component {
   state ={
     hobby: undefined,
     sessions: undefined,
-    modalIsOpen: false,
+    modalOneIsOpen: false,
+    modalTwoIsOpen: false
   }
 
 
@@ -52,14 +55,20 @@ class HobbyPage extends React.Component {
         .then(this.props.history.push('/home'))
     }
   }
-
   openEditHobbyModal = () => {
-    this.setState({modalIsOpen: true})
+    this.setState({modalOneIsOpen: true})
   }
   closeEditHobbyModal = () => {
-    this.setState({modalIsOpen: false})
+    this.setState({modalOneIsOpen: false})
+  }
+  openNewSessionModal = () => {
+    this.setState({modalTwoIsOpen: true})
+  }
+  closeNewSessionModal = () => {
+    this.setState({modalTwoIsOpen: false})
   }
 
+  
   render () {
     const hobbyId = this.props.match.params.id;
     if(!this.state.hobby || !this.state.sessions) {
@@ -67,24 +76,27 @@ class HobbyPage extends React.Component {
     }
     return (
       <div className="container min-h-screen">
-        <div className="grid grid-cols-2 gap-2">
+        <div className="grid grid-cols-2 gap-2 w-screen mt-28">
 
-          <div className="hobbyCol py-2 px-2" >
-            <div className="bg-blue-400 min-h-full flex justify-center py-2 px-2">
-              <h1 className="text-4xl underline">{this.state.hobby.name}</h1>
+          <div className="hobbyCol py-2 px-2 ml-4 overflow-auto h-96 border-8 border-blue-800" >
+            <div className="min-h-full flex justify-center py-2 px-2">
+              <div className="py-2 px-2 w-full flex flex-col items-center justify-start " >
+                <h1 className="text-4xl underline">{this.state.hobby.name}</h1>
+              </div>  
             </div>
           </div>
 
-          <div className="sessionCol py-2 px-2">
-            <div  className="bg-blue-400 min-h-full flex justify-center py-2 px-2">
-              <div className="bg-blue-100 py-2 px-2 w-full flex flex-col items-center justify-center" >
+          <div className="sessionCol border-8 border-blue-800 py-2 px-2 mr-4 h-96 overflow-auto">
+            <div  className="min-h-full flex justify-center py-2 px-2 ">
+              <div className="py-2 px-2 max-h-full w-full flex flex-col items-center justify-start " >
                 <h1 className="text-4xl underline">Sessions:</h1>
                 <SessionIndex sessions={this.state.sessions}/>
               </div>
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-2 flex justify-between">
+
+        <div className="grid grid-cols-2 flex justify-between mt-4">
           <div className="flex justify-center">
               <div className="bg-white border-2 border-black hover:bg-red-400 py-2 px-4">
                 <button onClick={() => this.openEditHobbyModal()} >Edit Hobby</button>
@@ -93,17 +105,22 @@ class HobbyPage extends React.Component {
 
           <div className="flex justify-center">
             <div className="bg-white border-2 border-black hover:bg-red-400 py-2 px-4">
-                <Link to={`/hobbies/${hobbyId}/add-session`} >
-                  <button>Add New Session</button>
-                </Link>
+                  <button onClick={() => this.openNewSessionModal()} >Add New Session</button>
+
               </div>
           </div>
         </div>
       
         <Modal 
-        isOpen={this.state.modalIsOpen}
+        isOpen={this.state.modalOneIsOpen}
+        style={{
+          content: {
+            width: "500px",
+            margin: "auto"
+          }
+        }}
         >
-          <div className="bg-white absolute inset-0 flex justify-center items-center ">
+          <div className="bg-white flex justify-center items-center">
             <EditHobbyFormHook 
               hobby={this.state.hobby} 
               history={this.props.history} 
@@ -111,6 +128,27 @@ class HobbyPage extends React.Component {
               deleteHobby={this.deleteHobby}
               openEditHobbyModal={this.openEditHobbyModal}
               closeEditHobbyModal={this.closeEditHobbyModal}
+            />
+          </div>
+        </Modal>
+
+        <Modal 
+        isOpen={this.state.modalTwoIsOpen}
+        style={{
+          content: {
+            width: "500px",
+            margin: "auto",
+          }
+        }}
+        >
+          <div className="bg-white flex justify-center items-center ">
+            <NewSessionFormHook 
+              hobby={this.state.hobby} 
+              history={this.props.history} 
+              fetchHobbyInfo={this.fetchHobbyInfo}
+              deleteHobby={this.deleteHobby}
+              openNewSessionModal={this.openNewSessionModal}
+              closeNewSessionModal={this.closeNewSessionModal}
             />
           </div>
         </Modal>
