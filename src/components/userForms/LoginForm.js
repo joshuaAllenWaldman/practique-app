@@ -20,23 +20,23 @@ const LoginForm = (props) => {
   }
 
   return (
-    <div className="flex justify-center items-center">
-      <form onSubmit={handleSubmit(onSubmit)} className="px-4 my-32 max-w-3xl mx-auto space-y-4">
-        <div>
+ 
+      <form onSubmit={handleSubmit(onSubmit)} className="px-4 max-w-2xl mx-auto flex flex-col items-center text-xl bg-gray-50 mt-4 border-4 border-blue-800 rounded-2xl">
+        <div className="my-2">
           <label htmlFor="username">UserName</label>
           <input className="border border-gray-800 ml-2 w-full" type="text" name="username" id="username" ref={register({required: true})}/> <br/>
         </div>
 
-        <div>
+        <div className="my-2">
           <label htmlFor="password">Password</label>
           <input className="border border-gray-800 ml-2 w-full" type="text" name="password" id="password"  ref={register({required: true})}/>
         </div>
         <div className="flex justify-center">
-        <button className="relative items-center bg-blue-800 text-white px-16 py-2 hover:bg-blue-400" >Login</button>
+        <button className="relative items-center bg-green-400 text-white px-8 py-2 hover:bg-green-200 my-2" >Login</button>
         </div>
       </form>
 
-    </div>
+
   )
 }
 

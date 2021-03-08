@@ -92,12 +92,19 @@ function SignupForm(props) {
         />
         {errors.confPassword && <p>{errors.confPassword.message}</p>}
       </div>
-      <div className="flex justify-center">
+      <div className="flex justify-around items-center">
         <button
-          className="bg-green-400 py-4 my-2 rounded px-4 text-xl hover:bg-red-200"
+          className="bg-green-400 py-2 my-2 rounded px-4 text-lg hover:bg-red-200"
           type="submit"
         >
           Signup!
+        </button>
+        <p>or</p>
+        <button
+          className="bg-green-400 py-2 my-2 rounded px-4 text-lg hover:bg-red-200"
+          type="submit"
+        >
+          Login Here
         </button>
       </div>
     </form>

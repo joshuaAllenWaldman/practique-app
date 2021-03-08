@@ -4,6 +4,7 @@ import React from 'react';
 
 class NavBar extends React.Component {
 
+
   logout = () => {
     fetch('http://localhost:4000/api/v1/users/logout', {
       credentials: 'include',
@@ -15,6 +16,7 @@ class NavBar extends React.Component {
       .then((jsonData) => console.log(jsonData))
   }
   render() {
+
     return (
       <div className="flex justify-around">
           <Link to="/home" ><span className="bg-blue-500 hover:bg-red-400 text-white py-2 px-4 mr-2" >Home</span></Link>
