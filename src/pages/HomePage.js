@@ -9,7 +9,7 @@ class HomePage extends React.Component {
     user: {},
     hobbies: [],
     sessions: [],
-    currentHobby: {},
+    currentHobby: undefined,
   };
 
   componentDidMount() {
@@ -61,7 +61,7 @@ class HomePage extends React.Component {
             </div>
           </div>
 
-          <div ref={this.sessionContainer} className="sessionCol border-4 border-pumpkin py-2 px-2 mr-8 overflow-auto bg-darkBlue">
+          {this.state.currentHobby && <div ref={this.sessionContainer} className="sessionCol border-4 border-pumpkin py-2 px-2 mr-8 overflow-auto bg-darkBlue">
             <div className="min-h-full flex flex-col justify-start py-2 px-2 items-center">
               <div className="heading px-16 py-4 bg-lightPink shadow-xl hover:bg-lightBlue flex flex-col justify-center items-center mb-2 transform transition rounded hover:scale-110 overflow-hidden">
                 <Link
@@ -85,7 +85,7 @@ class HomePage extends React.Component {
                 </Link>
               </div> */}
             </div>
-          </div>
+          </div>}
         </div>
       </div>
     );

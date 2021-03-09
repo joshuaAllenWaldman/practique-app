@@ -1,6 +1,8 @@
 import "./index.css";
 import Header from "./components/Header";
 import "./style/main.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 import { useState, useEffect, useRef } from "react";
 import { Route, Switch, Redirect, useHistory } from "react-router-dom";
@@ -40,7 +42,7 @@ function App() {
 
   
   return (
-    <div className="bg-lightPink" style={{ minHeight: "100vh" }}>
+    <div className="bg-lightPink" style={{ minHeight: "100vh", }}>
       <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       <Switch>
         
@@ -64,11 +66,14 @@ function App() {
           render={(props) => <LoginForm setIsLoggedIn={setIsLoggedIn} {...props}/> }
         />
 
-        <Route path="/signup" component={SignupForm} />
+        <Route 
+          path="/signup" 
+          render={(props) => <SignupForm setIsLoggedIn={setIsLoggedIn} {...props}/> }/>
 
         {isLoggedIn && <Route path="/add-hobby" component={NewHobbyFormHook} />}
-
-        <Route exact path="/" component={LandingPage} />
+        
+        <Route exact path="/"
+        render={(props) => <LandingPage isLoggedIn={isLoggedIn} {...props}/> }/>
         <Route path="/" render={() => <Redirect to="/"/>} />
       </Switch>
     </div>

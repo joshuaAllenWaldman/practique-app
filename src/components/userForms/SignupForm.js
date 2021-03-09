@@ -11,6 +11,7 @@ function SignupForm(props) {
     const { confPassword, ...rest } = data;
     fetch("http://localhost:4000/api/v1/users/", {
       method: "POST",
+      credentials: 'include',
       headers: {
         "Content-Type": "application/json",
       },
@@ -18,10 +19,11 @@ function SignupForm(props) {
     })
       .then((res) => res.json())
       .then((jsonData) => console.log(jsonData))
-      .then(() => props.history.push("/home"))
+      .then(() => props.setIsLoggedIn(true))
+      .then(() => props.history.push("/add-hobby"))
       .catch((err) => console.log(err));
   };
-  console.log(props);
+  
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
