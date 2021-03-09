@@ -137,7 +137,8 @@ class HobbyPage extends React.Component {
             margin: "auto",
             background: "#f6d7c3",
             border: "none",
-            height: "50%"
+            height: "50%",
+            borderRadius: '25px'
           },
           overlay: {
             backgroundColor: "rgba(48, 82, 91, 0.75)",

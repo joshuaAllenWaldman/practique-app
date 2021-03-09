@@ -1,8 +1,6 @@
 import "./index.css";
 import Header from "./components/Header";
 import "./style/main.css";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 import { useState, useEffect, useRef } from "react";
 import { Route, Switch, Redirect, useHistory } from "react-router-dom";

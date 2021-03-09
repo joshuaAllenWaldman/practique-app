@@ -43,6 +43,7 @@ class HomePage extends React.Component {
   render() {
     return (
       <div className="container">
+        
         <div className="grid grid-cols-2 gap-8 w-screen mt-4">
 
           <div className="hobbyCol py-2 px-2 ml-8 overflow-auto border-4 border-pumpkin bg-darkBlue">

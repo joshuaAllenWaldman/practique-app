@@ -55,11 +55,11 @@ const SessionPreviewList = (props) => {
               </h1>
             </div>
           </div>
-          <div className="bg-lightPink my-4 p-4 w-1/3 shadow-2xl hover:bg-lightBlue transform transition rounded hover:scale-110 overflow-hidden"
+          <div className="bg-lightPink cursor-pointer my-4 p-4 w-1/3 shadow-2xl hover:bg-lightBlue transform transition rounded hover:scale-110 overflow-hidden"
           onClick={() => setModalIsOpen(true)}
           >
-            <div className="flex justify-center h-8 items-center">
-              <h1 className="text-center text-darkBlue text-2xl">
+            <div className="cursor-pointer flex justify-center h-8 items-center">
+              <h1 className="text-center text-darkBlue text-2xl cursor-pointer">
                 Add First Session!
               </h1>
             </div>
@@ -77,6 +77,8 @@ const SessionPreviewList = (props) => {
             background: "#f6d7c3",
             border: "none",
             overflow: "scroll",
+            height: '80%',
+            borderRadius: "25px"
           },
           overlay: {
             backgroundColor: "rgba(48, 82, 91, 0.75)",

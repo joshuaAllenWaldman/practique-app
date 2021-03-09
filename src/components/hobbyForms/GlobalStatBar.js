@@ -1,8 +1,13 @@
 
-const GlobalStatBar = () => {
+const GlobalStatBar = (props) => {
+
   return (
-    <div>
-      <div>This is gonna be a global stat bar</div>
-    </div>
+    <div className="w-screen bg-lightBlue h-24 min-h-full mt-2 flex justify-around" >
+          <div className="w">
+
+          </div>
+        </div>
   )
 }
+
+export default

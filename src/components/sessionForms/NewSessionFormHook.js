@@ -62,7 +62,7 @@ function NewSessionFormHook (props) {
         </div>
           <div className="flex flex-row justify-around  mt-4 text-white" >
             <button type="submit" className="border px-3 py-4 mx-2 bg-darkBlue hover:bg-lightBlue " >Add Session</button>
-            <button className="bg-red-800 hover:bg-brickRed ml-2 px-4 py-1 " onClick={() => props.onCancel()} >Cancel</button>
+
           </div>
           
         </form>
