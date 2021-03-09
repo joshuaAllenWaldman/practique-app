@@ -1,20 +1,27 @@
 import { Link } from "react-router-dom";
+import moment from 'moment'
 
 const SessionIndex = (props) => {
-  // function dateSort(a, b) {
-  //   return new Date(b.createdAt).valueOf() - new Date(a.createdAt).valueOf()
-  // }
-  console.log(props)
-  const sessions = props.sessions.map((sesh, index) => {
+  let hasSessions = false;
+  if (props.sessions.length > 0) {
+    hasSessions = true;
+  }
+
+  function dateSort(a, b) {
+    return new Date(b.createdAt).valueOf() - new Date(a.createdAt).valueOf()
+  }
+  const sortedSesh = props.sessions.sort(dateSort)
+  const sessions = sortedSesh.map((sesh, index) => {
+  const seshDate = moment(sesh.createdAt).calendar()
     return (
-      <div className="bg-white border-2 border-black m-2 p-4 max-w-sm hover:bg-red-400">
+      <div className="bg-lightPink my-2 p-4 w-3/5 shadow-2xl hover:bg-lightBlue transform transition rounded hover:scale-110 overflow-hidden">
         <Link to={`/hobbies/${sesh.hobby}/session/${sesh._id}`}>
-          <div className="flex flex-row justify-around w-64 h-16 items-center">
+          <div className="flex flex-row justify-between items-center text-darkBlue">
             <h1>
-              Session {index + 1}: {sesh.nickName}{" "}
+              {sesh.nickName}
             </h1>
             <p>
-            {sesh.createdAt}
+            { seshDate }
             </p>
           </div>
         </Link>
@@ -22,7 +29,26 @@ const SessionIndex = (props) => {
     );
   });
 
-  return <>{sessions}</>;
+  return ( 
+    <>
+    {hasSessions && (<> {sessions} </>)}
+
+    {!hasSessions && (
+        <>
+          <div className="bg-lightPink my-4 p-4 w-1/3 shadow-2xl hover:bg-lightBlue transform transition rounded hover:scale-110 overflow-hidden"
+          onClick={() => props.openNewSessionModal()}
+          >
+            <div className="flex justify-center h-8 items-center">
+              <h1 className="text-center text-darkBlue text-2xl">
+                Add First Session!
+              </h1>
+            </div>
+          </div>
+        </>
+      )}
+
+    </>
+  )
 };
 
 export default SessionIndex;

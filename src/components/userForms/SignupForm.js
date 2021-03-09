@@ -21,13 +21,16 @@ function SignupForm(props) {
       .then(() => props.history.push("/home"))
       .catch((err) => console.log(err));
   };
-
+  console.log(props);
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="px-4 max-w-3xl mx-auto flex flex-col items-center text-xl bg-gray-50 mt-4 border-4 border-blue-800 rounded-2xl"
+      className="px-4 max-w-3xl w-1/4 mx-auto flex flex-col items-center border-darkBlue border-2 bg-lightBlue rounded mt-8 shadow-4xl"
     >
       <div>
+        <h1 className="text-4xl underline">Sign Up!</h1>
+      </div>
+      <div className="my-2 flex flex-col justify-center items-center">
         <label htmlFor="name">Name</label>
         <input
           className="border border-gray-400 block py-1 px-4 rounded"
@@ -38,7 +41,7 @@ function SignupForm(props) {
         />
         {errors.name && <p>Name Required</p>}
       </div>
-      <div>
+      <div className="my-2 flex flex-col justify-center items-center">
         <label htmlFor="username">UserName</label>
         <input
           className="border border-gray-400 block py-1 px-4 rounded"
@@ -53,7 +56,7 @@ function SignupForm(props) {
         )}
       </div>
 
-      <div>
+      <div className="my-2 flex flex-col justify-center items-center">
         <label htmlFor="email">Email</label>
         <input
           className="border border-gray-400 block py-1 px-4 rounded"
@@ -78,7 +81,7 @@ function SignupForm(props) {
         />
         {errors.password && <p>{errors.password.message}</p>}
       </div>
-      <div>
+      <div className="my-2 flex flex-col justify-center items-center">
         <label htmlFor="confPassword">Confirm Password</label>
         <input
           className="border border-gray-400 block py-1 px-4 rounded"
@@ -92,17 +95,17 @@ function SignupForm(props) {
         />
         {errors.confPassword && <p>{errors.confPassword.message}</p>}
       </div>
-      <div className="flex justify-around items-center">
+      <div className="flex justify-around items-center w-full text-white">
         <button
-          className="bg-green-400 py-2 my-2 rounded px-4 text-lg hover:bg-red-200"
+          className="bg-darkBlue py-2 my-2 w-1/2 rounded px-4 text-lg hover:bg-blue-800 transform transition rounded hover:scale-110 overflow-hidden"
           type="submit"
         >
           Signup!
         </button>
-        <p>or</p>
+
         <button
-          className="bg-green-400 py-2 my-2 rounded px-4 text-lg hover:bg-red-200"
-          type="submit"
+          onClick={() => props.history.push("/login")}
+          className="bg-green-400 py-2 my-2 w-1/2 rounded px-4 text-lg hover:bg-red-200 transform transition rounded hover:scale-110 overflow-hidden"
         >
           Login Here
         </button>

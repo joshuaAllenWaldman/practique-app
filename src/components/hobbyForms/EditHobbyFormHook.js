@@ -32,15 +32,14 @@ function EditHobbyFormHook (props) {
   
 
   return (
-      <form onSubmit={handleSubmit(onSubmit)} className="px-4 max-w-3xl mx-auto flex flex-col justify-center">
-
-          <div>
-            <label htmlFor="name">Name of Hobby</label>
-            <input  className="border border-gray-400 block py-2 px-4 rounded" type="text" name="name" id="name"  ref={register({required: true, minLength: 3})}/>
+      <form onSubmit={handleSubmit(onSubmit)} className="px-4 max-w-2xl mx-auto flex flex-col justify-center items-center text ">
+          <div className="my-2 flex flex-col justify-center items-center">
+            <label htmlFor="name" className="underline" >Name of Hobby</label>
+            <input  className="text-center border border-gray-400 block py-2 px-4 rounded" type="text" name="name" id="name"  ref={register({required: true, minLength: 3})}/>
             {errors.name && <p>This Field cannot be empty</p>}
           </div>
-          <div>
-            <label htmlFor="skillLevel">What's your skill level?</label>
+          <div className="my-2 flex flex-col justify-center items-center">
+            <label htmlFor="skillLevel" className="underline">What's your skill level?</label>
             <select className="border border-gray-400 block py-2 px-4 rounded" name="skillLevel" id="skillLevel"  ref={register}>
               <option value="beginner">Beginner</option>
               <option value="novice">Novice</option>
@@ -48,18 +47,16 @@ function EditHobbyFormHook (props) {
               <option value="expert">Expert</option>
             </select> 
           </div>
-          <div>
-            <label htmlFor="longTermGoals">What is your long term goal?</label>
-            <input  className="border border-gray-400 block py-2 px-4 rounded" type="text" name="longTermGoals" id="longTermGoals" ref={register}/>
+          <div className="my-2 flex flex-col justify-center items-center">
+            <label htmlFor="longTermGoals" className="underline">What is your long term goal?</label>
+            <input  className="border border-gray-400 block py-2 px-4 rounded min-w-full" type="text" name="longTermGoals" id="longTermGoals" ref={register}/>
           </div>
-          <div className="flex flex-row justify-around mt-2">
-            <button type="submit" className="bg-blue-400 px-3 py-1 mx-2 hover:bg-blue-200" >Update Hobby</button>
-            <button className="bg-green-400 ml-2 px-3 py-1 mx-2 hover:bg-red-400" onClick={() => props.closeEditHobbyModal()} >Cancel</button>
-            <button className="bg-red-400 px-3 py-1 mx-2 hover:bg-red-200" onClick={() => props.deleteHobby(props.hobby._id)} >Delete Hobby</button>
-
+          <div className="flex flex-row justify-around mt-4 text-white">
+            <button type="submit" className="bg-darkBlue px-3 py-4 mx-2 hover:bg-lightBlue" >Update Hobby</button>
+            <button className="bg-red-800 px-3 py-1 mx-2 hover:bg-brickRed" onClick={() => props.deleteHobby(props.hobby._id)} >Delete Hobby</button>
           </div>
-
       </form> 
+
   )
 }
 

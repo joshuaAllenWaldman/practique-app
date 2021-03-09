@@ -24,43 +24,54 @@ function NewHobbyFormHook(props) {
       .catch((err) => console.log(err));
   };
 
-  console.log(watch("name"));
-
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="px-4 max-w-3xl mx-auto flex flex-col justify-center text-xl bg-gray-50 mt-4 border-4 border-blue-800">
-      <div className="mt-2">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="px-4 max-w-3xl mx-auto flex flex-col justify-center border-darkBlue border-2 bg-lightBlue rounded mt-8"
+    >
+      <div className="my-2 flex flex-col justify-center items-center">
         <label htmlFor="name">Name of Hobby</label>
         <input
           type="text"
           name="name"
           id="name"
-          className="border border-gray-400 block w-full py-2 px-4 rounded"
+          className="border border-gray-400 block w-3/4 py-2 px-4 rounded"
           ref={register({ required: true })}
         />
         {errors.name && <p>This field is required</p>}
       </div>
 
-      <div>
+      <div className="my-2 flex flex-col justify-center items-center">
         <label htmlFor="skillLevel">What's your skill level?</label>
-        <select className="border border-gray-400 block py-2 px-4 w-full rounded" name="skillLevel" id="skillLevel" ref={register}>
+        <select
+          className="border border-gray-400 block py-2 px-4 w-3/4 rounded"
+          name="skillLevel"
+          id="skillLevel"
+          ref={register}
+        >
           <option value="beginner">Beginner</option>
           <option value="novice">Novice</option>
           <option value="intermediate">Intermediate</option>
           <option value="expert">Expert</option>
         </select>
       </div>
-      <div>
+      <div className="my-2 flex flex-col justify-center items-center">
         <label htmlFor="longTermGoals">What is your long term goal?</label>
         <input
           type="text"
           name="longTermGoals"
           id="longTermGoals"
-          className="border border-gray-400 block py-2 px-4 w-full rounded"
+          className="border border-gray-400 block py-2 px-4 w-3/4 rounded"
           ref={register}
         />
       </div>
-      <div className="flex justify-center">
-        <button className="bg-green-400 w-1/4 py-4 my-2 text-xl hover:bg-green-200" type="submit">Add Hobby</button>
+      <div className="flex justify-center text-white">
+        <button
+          className="bg-darkBlue w-1/4 py-4 my-2 text-xl hover:bg-blue-800 rounded-lg transform transition rounded hover:scale-110"
+          type="submit"
+        >
+          Add Hobby
+        </button>
       </div>
     </form>
   );

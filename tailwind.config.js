@@ -29,6 +29,35 @@ module.exports = {
       indigo: colors.indigo,
       purple: colors.violet,
       pink: colors.pink,
+      offWhite: {
+        DEFAULT: "#fefdfb",
+      },
+      orange: {
+        DEFAULT: "#fa733c"
+      },
+      brickRed: {
+        DEFAULT: "#e51127"
+      },
+      darkFont: {
+        DEFAULT: "#052522"
+      },
+      lightBrown: {
+        DEFAULT: "#bfac9d"
+      },
+      pumpkin: {
+        DEFAULT: "#bf764c"
+      },
+      darkBlue: {
+        DEFAULT: "#30525b"
+      },
+      lightBlue: {
+        DEFAULT: "#9eb1ae"
+      },
+      lightPink: {
+        DEFAULT: "#f6d7c3"
+      },
+
+
     },
     spacing: {
       px: '1px',
