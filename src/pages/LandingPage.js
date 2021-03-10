@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const LandingPage = (props) => {
   return (
-    <div className="flex flex-col justify-start items-center bg-darkBlue my-8 mx-32 opacity-90 rounded-xl">
+    <div className="flex flex-col justify-start items-center bg-darkBlue my-8 mx-32 opacity-90 rounded-xl shadow-8xl">
       <div className="title text-8xl underline my-4 text-lightPink  py-4 text-center shadow-8xl rounded">
         <h1 style={{fontFamily: "Karla"}}>Welcome to Practíque</h1>
       </div>

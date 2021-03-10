@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import HobbyIndex from "../components/hobbyComponents/HobbyIndex";
 import SessionPreview from "../components/sessionComponents/SessionPreview";
+import GlobalStatBar from '../components/hobbyComponents/GlobalStatBar'
 
 class HomePage extends React.Component {
   sessionContainer = React.createRef();
@@ -11,6 +12,26 @@ class HomePage extends React.Component {
     sessions: [],
     currentHobby: undefined,
   };
+
+  fetchAllSessions = () => {
+    const sessionsArr = [];
+    this.state.hobbies.map((hobby) => {
+      fetch(`http://localhost:4000/api/v1/hobbies/${hobby._id}/sessions`, {
+        credentials: 'include'
+      })
+        .then((res) => res.json())
+        .then((jsonData) => {
+          jsonData.map((obj) => {
+            sessionsArr.push(obj)
+          })
+        })
+        .catch((err) => console.log(err));
+    })
+    this.setState({sessions: sessionsArr})
+    console.log('Fetch All Sessions - ', sessionsArr)
+  }
+
+
 
   componentDidMount() {
     fetch(`http://localhost:4000/api/v1/users/`, {
@@ -31,6 +52,7 @@ class HomePage extends React.Component {
         });
       })
       .catch((err) => console.log(err));
+    
   }
 
   updateCurrentHobby = (hobby) => {
@@ -39,11 +61,19 @@ class HomePage extends React.Component {
     });
   };
 
-  // bg-blue-600 p-3 rounded min-w-500 min-h-screen flex justify-center
+  
   render() {
+    
     return (
       <div className="container">
-        
+        <div className="w-screen flex justify-center">
+          <div className="bg-darkBlue w-2/5 max-w-2/3 mt-2 text-center rounded border-4 border-pumpkin">
+            <h1 className="text-lightPink py-2 text-6xl" style={{fontFamily: 'Karla'}}>
+              Welcome, {this.state.user.username}!
+
+            </h1>
+          </div>
+        </div>
         <div className="grid grid-cols-2 gap-8 w-screen mt-4">
 
           <div className="hobbyCol py-2 px-2 ml-8 overflow-auto border-4 border-pumpkin bg-darkBlue">

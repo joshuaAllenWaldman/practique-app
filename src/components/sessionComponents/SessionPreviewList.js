@@ -48,7 +48,7 @@ const SessionPreviewList = (props) => {
 
       {!hasSessions && (
         <>
-          <div className="bg-pumpkin my-4 p-4 w-3/5 shadow-2xl overflow-hidden">
+          <div className="bg-pumpkin my-4 p-4 w-2/5 shadow-2xl overflow-hidden rounded">
             <div className="flex justify-center h-16 items-center">
               <h1 className="text-center text-darkBlue text-2xl">
                 No Sessions Logged Yet
