@@ -1,4 +1,26 @@
-$~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ P R A C T I Q U E ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$
+
+$~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ P R A C T I Q U E ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$
+
+Technology Used: 
+  -React
+  -MongoDB
+  -Mongoose
+  -JavaScript
+  -CSS(TailWind)
+  -Express
+  -HTML5
+
+  Dependencies:
+  -moment
+  -postcss
+  -react-hook-form
+  -react-router-dom
+  -react-modal
+  -react-scripts
+  -tailwindcss
+  -body-parser
+  -cors
+
 
                                   USER STORIES
 
@@ -17,7 +39,7 @@ When starting a new hobby, the user will be able to add goals for themselves tha
 
 ------------------------------------------------------------------------------------
 TECHNOLOGY
-React - Django - Heroku - PostgreSQL - JavaScript - CSS - HTML5 - Tailwind or Bootstrap - Mailchimp(maybe)
+React - Mongo - Heroku - Mongoose - JavaScript - CSS - HTML5 - Tailwind  - 
 
 
 SPRINT 1(Day One, hopefully)

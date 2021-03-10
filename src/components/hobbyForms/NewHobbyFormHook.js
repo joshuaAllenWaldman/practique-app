@@ -30,6 +30,11 @@ function NewHobbyFormHook(props) {
       className="px-4 max-w-3xl mx-auto flex flex-col justify-center border-darkBlue border-2 bg-lightBlue rounded mt-8"
     >
       <div className="my-2 flex flex-col justify-center items-center">
+        <h1 className="text-4xl underline">
+          Add A New Hobby! 
+        </h1>
+      </div>
+      <div className="my-2 flex flex-col justify-center items-center">
         <label htmlFor="name">Name of Hobby</label>
         <input
           type="text"

@@ -1,5 +1,6 @@
 import "./index.css";
 import Header from "./components/Header";
+
 import "./style/main.css";
 
 import { useState, useEffect, useRef } from "react";
@@ -42,6 +43,7 @@ function App() {
   return (
     <div className="bg-lightPink" style={{ minHeight: "100vh", }}>
       <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+
       <Switch>
         
         {isLoggedIn && <Route path="/home" component={HomePage} />}
@@ -74,8 +76,10 @@ function App() {
         render={(props) => <LandingPage isLoggedIn={isLoggedIn} {...props}/> }/>
         <Route path="/" render={() => <Redirect to="/"/>} />
       </Switch>
+
     </div>
   );
 }
+
 
 export default App;

@@ -8,18 +8,18 @@ class SessionPreview extends React.Component {
   }
   state = {
     sessions: [],
-    hobby: {},
   };
 
   fetchSessionInfo() {
     const hobbyId = this.props.hobby._id;
-    this.setState({ hobby: this.props.hobby }, () => {
-      fetch(`http://localhost:4000/api/v1/hobbies/${hobbyId}/sessions`, {
-        credentials: "include",
-      })
-        .then((res) => res.json())
-        .then((jsonData) => this.setState({ sessions: jsonData }));
-    });
+    fetch(`http://localhost:4000/api/v1/hobbies/${hobbyId}/sessions`, {
+      credentials: "include",
+    })
+      .then((res) => res.json())
+      .then((jsonData) => this.setState({ sessions: jsonData }));
+  }
+  componentDidMount () {
+    this.fetchSessionInfo()
   }
 
   componentDidUpdate(prevProps) {
@@ -32,7 +32,7 @@ class SessionPreview extends React.Component {
     return (
       <>
         <SessionPreviewList
-          hobby={this.state.hobby}
+          hobby={this.props.hobby}
           sessions={this.state.sessions}
           fetchSessionInfo={this.fetchSessionInfo}
         />
